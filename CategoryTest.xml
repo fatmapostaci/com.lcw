@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="4">
+    <test verbose="2" preserve-order="true"
+          name="CategoryTest0">
+        <classes>
+            <class name="tests.CategoryTest">
+                <methods>
+                    <include name="TC06_01"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="CategoryTest1">
+        <classes>
+            <class name="tests.CategoryTest">
+                <methods>
+                    <include name="TC06_02"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="CategoryTest2">
+        <classes>
+            <class name="tests.CategoryTest">
+                <methods>
+                    <include name="TC06_03"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="CategoryTest3">
+        <classes>
+            <class name="tests.CategoryTest">
+                <methods>
+                    <include name="TC06_04"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
