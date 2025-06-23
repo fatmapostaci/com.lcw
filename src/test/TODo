@@ -1,0 +1,154 @@
+Kritik UI bileşenleri
+
+Ana navigasyon menüsü
+
+Arama kutusu
+
+Sepet butonu
+
+Giriş/Üyelik butonları
+
+Ana kategori listesi
+
+Footer'daki iletişim/kargo bilgileri
+
+
+🧪 2. Kullanıcı senaryosu odaklı testler
+
+"Kullanıcı ana sayfaya gelir, kadın kategorisine tıklar, ürünleri görür"
+
+"Kullanıcı anasayfada arama kutusuna 'gömlek' yazar, sonuç sayfasına gider"
+
+Navigasyon / Erişim Senaryoları
+Senaryo 1: Kullanıcı ana sayfaya gelir ve üst menüden kadın kategorisini seçer
+
+Ana sayfa açılır
+
+Üst menüde "Kadın" kategorisi görünür
+
+Kullanıcı "Kadın" kategorisine tıklar
+
+Kadın ürün listesi sayfasına yönlendirilir
+
+Ürün kartları görünür
+
+Senaryo 2: Kullanıcı mobilde hamburger menüsünden çocuk kategorisine ulaşır
+
+Ana sayfa mobil ekran boyutunda açılır
+
+Hamburger menüsü tıklanır
+
+Menüde "Çocuk" kategorisi görünür
+
+Tıklanınca çocuk kategorisi açılır ve alt kategoriler listelenir
+
+✅ 2. Arama Fonksiyonu Senaryoları
+Senaryo 3: Kullanıcı arama kutusuna "gömlek" yazar ve sonuçları görür
+
+Arama kutusu bulunur
+
+"gömlek" yazılır ve Enter'a basılır
+
+Arama sonuç sayfasına yönlendirilir
+
+En az 1 ürün kartı görünür
+
+Arama başlığı “gömlek” içerir
+
+Senaryo 4: Kullanıcı arama geçmişinden daha önceki aramasını tekrar seçer
+
+Arama kutusuna tıklanır
+
+Önceki arama kelimeleri görünür
+
+"pantolon" seçilir
+
+Arama sonuç sayfası açılır
+
+✅ 3. Sepet & Satın Alma Akışı Senaryoları
+Senaryo 5: Kullanıcı bir ürünü sepete ekler ve sepette görür
+
+Ürün listesi sayfası açılır
+
+Bir ürün seçilir
+
+Beden seçilir (eğer varsa)
+
+"Sepete Ekle" butonu tıklanır
+
+Sepet açılır ve ürün listelenir
+
+Senaryo 6: Kullanıcı sepete eklediği ürünü siler
+
+Sepete gidilir
+
+Ürün listelenir
+
+“Sil” veya “Çıkar” butonuna tıklanır
+
+Sepet boş görünür
+
+✅ 4. Üyelik / Giriş Akışı Senaryoları
+Senaryo 7: Kullanıcı e-posta ile giriş yapar
+
+Giriş butonuna tıklanır
+
+Giriş formu açılır
+
+E-posta ve şifre girilir
+
+“Giriş Yap” tıklanır
+
+Başarılı şekilde ana sayfaya yönlendirilir
+
+Kullanıcı adı / “Hesabım” menüsü görünür
+
+Senaryo 8: Kullanıcı şifresini unutur
+
+Giriş ekranında "Şifremi unuttum" tıklanır
+
+E-posta adresi girilir
+
+"Gönder" tıklanır
+
+Şifre sıfırlama bilgilendirmesi görünür
+
+✅ 5. Filtreleme ve Sıralama Senaryoları
+Senaryo 9: Kullanıcı bir kategori altında ürünleri renge göre filtreler
+
+Erkek kategori sayfası açılır
+
+Sol filtre panelinde "Renk" filtresi görünür
+
+"Siyah" rengi seçilir
+
+Sayfa yenilenir ve yalnızca siyah ürünler listelenir
+
+Senaryo 10: Kullanıcı ürünleri fiyata göre sıralar
+
+Kadın kategori sayfası açılır
+
+Sıralama menüsünden “Artan Fiyat” seçilir
+
+Ürünler düşükten yükseğe sıralanır
+
+✅ 6. Footer ve Bilgi Sayfaları Senaryoları
+Senaryo 11: Kullanıcı "Hakkımızda" sayfasına gider
+
+Footer'da “Hakkımızda” linki görünür
+
+Link tıklanır
+
+Sayfa başarılı şekilde açılır
+
+Sayfa başlığı "Hakkımızda" içerir
+
+Senaryo 12: Kullanıcı iletişim sayfasından destek formuna ulaşır
+
+Footer'da "İletişim" tıklanır
+
+Sayfa açılır
+
+İletişim formu görünür
+
+Alanlar doldurulabilir olmalıdır

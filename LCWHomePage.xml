@@ -4,7 +4,7 @@
     <test verbose="2" preserve-order="true"
           name="C:/Users/tugba/IdeaProjects/com.AMAZON/src/test/java/tests/AmazonHomeTest.java">
         <classes>
-            <class name="tests.LCWHomeTest">
+            <class name="tests.HomePageTest">
                 <methods>
                     <include name="TC07_01"/>
                     <include name="TC07_02"/>

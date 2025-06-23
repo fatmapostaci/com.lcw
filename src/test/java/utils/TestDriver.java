@@ -13,7 +13,6 @@ public class TestDriver {
 
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
-
     public static WebDriver getDriver(String browser) {
         if (driverThreadLocal.get() == null) {
             WebDriver driver = createDriver(browser);
@@ -24,7 +23,6 @@ public class TestDriver {
         return driverThreadLocal.get();
     }
 
-
     public static WebDriver createDriver(String browser) {
         return switch (browser.toLowerCase()) {
             case "chrome" -> new ChromeDriver();
@@ -33,7 +31,6 @@ public class TestDriver {
             case "safari" -> new SafariDriver();
             default -> throw new IllegalArgumentException("Geçersiz tarayıcı türü: " + browser);
         };
-
     }
 
     public static void quitDriver() {
@@ -42,6 +39,5 @@ public class TestDriver {
             driverThreadLocal.remove();
         }
     }
-
 
 }
