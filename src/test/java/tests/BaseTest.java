@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import pages.BasketPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.UserPage;
@@ -18,17 +19,18 @@ public class BaseTest {
     protected WebDriver driver;
     private final Logger logger = LogManager.getLogger(BaseTest.class);
 
-    private HomePage homePage;
+    private HomePage lcwHomePage;
     private LoginPage loginPage;
     private UserPage userPage;
+    private BasketPage basketPage;
 
-    public HomePage homePage() {
+    public HomePage lcwHomePage() {
 
-        if( homePage==null){
+        if(lcwHomePage==null){
 
-            homePage = new HomePage(driver);
+            lcwHomePage = new HomePage(driver);
         }
-        return homePage;
+        return lcwHomePage;
     }
 
     public LoginPage loginPage(){
@@ -45,6 +47,12 @@ public class BaseTest {
         return userPage;
     }
 
+    public BasketPage basketPage(){
+        if(basketPage==null){
+            basketPage = new BasketPage(driver);
+        }
+        return basketPage;
+    }
 
     @BeforeMethod
     @Parameters("browser")
@@ -56,9 +64,9 @@ public class BaseTest {
         //caphta çıkarsa geçmek için
         try {
             ReusableMethods.waitForElementToBeClickable(driver, By.xpath("//div//span[@class='ins-web-opt-in-reminder-close-button']"),10).click();
-            logger.info("captha geçildi");
+            logger.info("Captha geçildi");
         } catch (Exception e) {
-            System.out.println("Try image button not found");
+            System.out.println("Captha bulunamadı");
         }
 //        try {
 //            ReusableMethods.waitForElementToBeClickable(driver, By.cssSelector("span.a-button-inner input.a-button-input"),10).click();

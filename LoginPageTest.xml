@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LOGIN Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="LCWHOMEPAGE ELEMENT DISPLAY TEST">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="TC02_01"/>
+                 </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

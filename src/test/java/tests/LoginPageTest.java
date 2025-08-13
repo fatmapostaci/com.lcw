@@ -10,7 +10,7 @@ import utils.ConfigReader;
 
 public class LoginPageTest extends BaseTest {
 
-    Logger logger = LogManager.getLogger(HomePageTest.class);
+    Logger logger = LogManager.getLogger(LoginPageTest.class);
     protected LoginPage loginPage;
 
     @Owner("Fatma")
@@ -21,8 +21,8 @@ public class LoginPageTest extends BaseTest {
     public void TC02_01(){
         driver.navigate().to(ConfigReader.getProperty("loginpage_url"));
         loginPage = new LoginPage( driver);
-        Assert.assertTrue(loginPage.isUserSuccesfullyLoggedIn(),"Kullanıcı login olamadı");
+        Assert.assertTrue(loginPage.isUserSuccesfullyLoggedIn(),"Kullanıcı başarıyla login olamadı");
     }
 
 
-}
+}//div[id='cookieseal-banner']

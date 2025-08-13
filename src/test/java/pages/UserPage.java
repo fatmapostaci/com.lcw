@@ -27,4 +27,5 @@ public class UserPage extends BaseTest {
         logger.info("Hesabım butonu görüntülendi mi? " + isDisplayed);
         return isDisplayed;
     }
+
 }

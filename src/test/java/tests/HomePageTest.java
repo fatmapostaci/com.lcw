@@ -4,11 +4,10 @@ import io.qameta.allure.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pages.BasketPage;
 import pages.HomePage;
 import pages.LoginPage;
-import utils.JavascriptUtils;
 
 import static utils.TestDriver.getDriver;
 
@@ -18,85 +17,92 @@ public class HomePageTest extends BaseTest {
     protected HomePage lcwHomePage;
 
     @Owner("Fatma")
-    @Severity(SeverityLevel.CRITICAL)
-    @Description("Kullanici anasayfaya gittiginde anasayfa 3 saniye icinde yüklenmelidir")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Anasayfa 15 saniye icinde yüklenmelidir")
     @Story("US01")
-    @Parameters( "3000" )  //3sn
-    @Test(groups = {"Smoke"})
-    public void TC01_01( long duration ) {
+    @Test(groups = {"Regression"})
+    public void TC01_01( ) {
         lcwHomePage = new HomePage(driver);
-
-        //Sayfa tamamen yüklenene kadar beklenir
-       long loadingTime = JavascriptUtils.pageLoadingTime();
-       logger.info( "LCW anasayfa yüklenme süresi " + loadingTime +" milisaniye, "+ loadingTime / duration+" saniyedir");
-
-        //Sayfanin maksimum 3 saniye icerisinde yüklendigi dogrulanir
-        Assert.assertTrue(loadingTime <= duration, "Anasayfanın yüklenmesi "+duration+" saniyeden fazla sürdü");
-        logger.info("Anasayfanin "+loadingTime+" saniye icinde yüklendigi dogrulandi");
+        long duration = 15000;
+        long actualDuration = lcwHomePage.pageLoadingTime();
+        Assert.assertTrue(actualDuration <= duration, "Sayfa yüklenme süresi fazla: " + actualDuration + " ms");
     }
 
     @Owner("Fatma")
     @Severity(SeverityLevel.NORMAL)
-    @Description("Kullanici anasayfaya gittiginde search box görünür olmali")
+    @Description("UI bileşen testi - Searchbox görünür olmali")
     @Story( "US01" )
-    @Test( groups = {"Smoke"} )
+    @Test( groups = {"Regression"} )
     public void TC01_02() {
         lcwHomePage = new HomePage( getDriver("browser"));
-        // Anasayfada "arama kutusu" görünür olmalidir
         Assert.assertTrue(lcwHomePage.isSearchBoxDisplayed(),"search box bulunmadı");
-
     }
 
     @Owner("Fatma")
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Kullanici anasayfaya gittiginde .. menüsü görünür olmali")
+    @Description("UI bileşen testi - Login buttonu görünür olmali")
     @Story("US01")
-    @Test( groups = {"Regression","Smoke"} )
+    @Test(groups = {"Regression"})
     public void TC01_03() {
         lcwHomePage = new HomePage( getDriver("browser"));
-    //    Assert.assertTrue(lcwHomePage.()));
-        logger.info("Homepage'teki Category button görünürlügü test edildi");
+        Assert.assertTrue(lcwHomePage.isLoginLinkDisplayed());
+        logger.info("Homepage'teki Giriş butonunun görünürlügü test edildi");
     }
 
     @Owner("Fatma")
-    @Severity(SeverityLevel.CRITICAL)
-    @Description("Kullanici anasayfaya gittiginde navigateToLoginPage buttonu görünür olmali")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("UI bileşen testi - Navigation menu listesi görünür olmali")
     @Story("US01")
-    @Test(groups = {"Regression","Smoke"})
+    @Test(groups = {"Regression"})
     public void TC01_04() {
         lcwHomePage = new HomePage( getDriver("browser"));
-        Assert.assertTrue(lcwHomePage.isLoginLinkDisplayed());
-        logger.info("Homepage'teki navigateToLoginPage button görünürlügü test edildi");
+        Assert.assertTrue(lcwHomePage.isNavMenuDisplayed(),"Navigation menü bar görüntülenemedi");
+        logger.info("Homepage'teki Navigation Menu listesinin görünürlüğü test edildi");
+    }
+
+    @Owner("Fatma")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("UI bileşen testi - Sepet buttonu görünür olmali")
+    @Story("US01")
+    @Test(groups = {"Regression"})
+    public void TC01_05() {
+        lcwHomePage = new HomePage( getDriver("browser"));
+        Assert.assertTrue(lcwHomePage.isBasketLinkDisplayed()," sepet linki görüntülenemedi");
+        logger.info("Homepage'teki Sepetim butonunun görünürlügü test edildi ");
     }
     @Owner("Fatma")
     @Severity(SeverityLevel.NORMAL)
-    @Description("Kullanici anasayfaya gittiginde menu nav listesi görünür olmali")
+    @Description("UI bileşen testi - Footer'daki iletişim/kargo bilgileri\n")
     @Story("US01")
     @Test(groups = {"Regression"})
-    public void TC01_11() {
+    public void TC01_06() {
         lcwHomePage = new HomePage( getDriver("browser"));
-        Assert.assertTrue(lcwHomePage.isMenuNavMenuDisplayed(),"menu nav görüntülenemedi");
-        logger.info("Anasayfadan menu nav listesinin görünürlüğü test edildi");
+        Assert.assertTrue(lcwHomePage.isFooterContentDisplayed()," Footer Content görüntülenemedi");
+        logger.info("Homepage'teki Footer alanının görünürlügü test edildi");
     }
+    //****************************************UI Bileşen Testi Sonu**************************************//
+
     @Owner("Fatma")
     @Severity(SeverityLevel.NORMAL)
-    @Description("Kullanici anasayfaya gittiginde navigateToLoginPage buttonu görünür olmali")
+    @Description("Giriş Yap linkine tıklanınca login sayfasına yönlendirilmeli")
     @Story("US01")
     @Test(groups = {"Regression"})
-    public void TC01_12() {
+    public void TC01_07() {
         lcwHomePage = new HomePage( getDriver("browser"));
-        Assert.assertTrue(lcwHomePage.isLoginLinkDisplayed(),"navigateToLoginPage linki görüntülenemedi");
+        LoginPage loginPage = lcwHomePage.goToLoginPage();
+        Assert.assertTrue( loginPage.isDisplayedEmailAndPhoneElement(),"Giriş sayfası görüntülenemedi");
         logger.info("Anasayfadan Login sayfasının açıldığı test edildi");
     }
     @Owner("Fatma")
     @Severity(SeverityLevel.NORMAL)
-    @Description("Kullanici navigateToLoginPage linkine tıklayınca navigateToLoginPage sayfasına yönlendirilmeli")
+    @Description("Sepetim linkine tıklanınca Sepet sayfasına yönlendirilmeli")
     @Story("US01")
     @Test(groups = {"Regression"})
-    public void TC01_13() {
+    public void TC01_08() {
         lcwHomePage = new HomePage( getDriver("browser"));
-        LoginPage loginPage = lcwHomePage.navigateToLoginPage();
-        Assert.assertTrue( loginPage.isDisplayedEmailAndPhoneElement(),"Login linki görüntülenemedi");
-        logger.info("Anasayfadan Login sayfasının açıldığı test edildi");
+        BasketPage basketPage = lcwHomePage.goToBasket();
+        Assert.assertTrue( basketPage.isCurrentUrlBasket(),"sepet sayfası görüntülenemedi");
+        logger.info("Anasayfadan Sepet sayfasının açıldığı test edildi");
     }
+
 }

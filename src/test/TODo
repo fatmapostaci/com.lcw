@@ -1,16 +1,18 @@
+Anasayfa 15 saniye icinde yüklenmelidir
+
 Kritik UI bileşenleri
+UI bileşen testi - Searchbox görünür olmali             +
+UI bileşen testi - Login buttonu görünür olmali         +
+UI bileşen testi - Searchbox görünür olmali             +
+UI bileşen testi - Login buttonu görünür olmali         +
+UI bileşen testi - Navigation menu listesi görünür olmali +
+UI bileşen testi - Sepet buttonu görünür olmali         +
+UI bileşen testi - Footer'daki iletişim/kargo bilgileri +
+Giriş Yap linkine tıklanınca login sayfasına yönlendirilmeli     +
+Sepetim linkine tıklanınca Sepet sayfasına yönlendirilmeli       +
 
-Ana navigasyon menüsü
 
-Arama kutusu
 
-Sepet butonu
-
-Giriş/Üyelik butonları
-
-Ana kategori listesi
-
-Footer'daki iletişim/kargo bilgileri
 
 
 🧪 2. Kullanıcı senaryosu odaklı testler

@@ -2,23 +2,25 @@ package pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import tests.BaseTest;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ConfigReader;
+import utils.JavascriptUtils;
 import utils.ReusableMethods;
+
+import java.time.Duration;
 
 import static utils.TestDriver.getDriver;
 
-public class LoginPage extends BaseTest {
+public class LoginPage {
 
     boolean isDisplayed;
-    protected LoginPage loginPage;
-    protected UserPage userPage;
     Logger logger = LogManager.getLogger(LoginPage.class);
-
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
@@ -26,7 +28,7 @@ public class LoginPage extends BaseTest {
     @FindBy (xpath = "//div/input[@name='emailAndPhone']")
     private WebElement emailAndPhoneElement;
 
-    @FindBy (css = "button.navigateToLoginPage-form__button.navigateToLoginPage-form__button--bg-blue")
+    @FindBy (xpath = "//div/button[text()='Devam Et']")
     private WebElement continueForPasswordButton;
 
 
@@ -35,6 +37,9 @@ public class LoginPage extends BaseTest {
 
     @FindBy (xpath = "//form/button[text()='Giriş Yap']")
     private WebElement loginButton;
+
+    @FindBy(xpath = "//div[@id='cookieseal-banner']")
+    private WebElement messageBanner;
 
     //***********************************Getter Methods*******************************************
 
@@ -64,7 +69,7 @@ public class LoginPage extends BaseTest {
         logger.info("Password bilgisi girildi " + passwordElement.getText());
     }
     public void clickLoginButton(){
-        loginButton.click();
+        JavascriptUtils.clickElementByJS(loginButton);
         logger.info("Login butonuna tıklandı.");
     }
     public boolean isDisplayedEmailAndPhoneElement(){
@@ -74,20 +79,19 @@ public class LoginPage extends BaseTest {
     }
 
     public void clickContinueButton() {
-        ReusableMethods.waitForClickability(getDriver("browser"),continueForPasswordButton,10);
-//        continueForPasswordButton.click();
+//        ReusableMethods.waitForClickability(getDriver("browser"),continueForPasswordButton,10);
+        continueForPasswordButton.click();
         logger.info("Password girilmesi için Devam butonuna tıklandı");
     }
-public void login(){
 
-}
     public boolean isUserSuccesfullyLoggedIn() {
-        userPage = new UserPage(getDriver("browser"));
         setEmailAndPhoneElement(ConfigReader.getProperty("email"));
         clickContinueButton();
         setPasswordElement(ConfigReader.getProperty("password"));
         clickLoginButton();
-        ReusableMethods.waitForSeconds(5000);
-        return userPage.isDisplayedMyAccountButton();
+        ReusableMethods.waitForSeconds(5);
+        //todo messageBanner geçilmesi için telefona gelen mesajı alacak bir düzenleme eklenmeli
+        ReusableMethods.waitForSeconds(40);
+        return new UserPage(getDriver("browser")).isDisplayedMyAccountButton();
     }
 }

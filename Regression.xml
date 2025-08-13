@@ -10,8 +10,8 @@
     <parameter name="browser" value="chrome"></parameter>
     <test verbose="2" preserve-order="true" name="regression testi fatma">
         <classes>
-            <class name="tests.CategoryTest"></class>
-            <class name="tests.FilterTest"></class>
+            <class name="tests.HomePageTest"></class>
+            <class name="tests.LoginPageTest"></class>
 
         </classes>
     </test>

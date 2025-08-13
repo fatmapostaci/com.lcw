@@ -7,10 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
+import utils.JavascriptUtils;
 import utils.ReusableMethods;
-
 import java.util.List;
-
 import static utils.TestDriver.getDriver;
 
 public class HomePage {
@@ -43,6 +42,13 @@ public class HomePage {
     @FindBy (xpath= "//a/span[text()='Giriş Yap']")
     private WebElement loginLink;
 
+    @FindBy (xpath = "//div//span[text()='Sepetim']")
+    private WebElement basketLink;
+
+    @FindBy (xpath = "div[class='footer-content']")
+    private WebElement footerContent;
+
+
 
     //***********************************Getter Methods*******************************************
 
@@ -57,7 +63,7 @@ public class HomePage {
 
  //*********************************is Clickable Method*********************************************
 
-    public boolean isElementClickable(WebElement element){
+    public boolean clickElementWithExplicitWait(WebElement element){
         try {
             ReusableMethods.waitForClickability(getDriver(ConfigReader.getProperty("browser")),element,10);
             return true;
@@ -69,17 +75,17 @@ public class HomePage {
     //***********************************Extra methods***************************
 
 
-    public LoginPage navigateToLoginPage() {
-        ReusableMethods.waitForClickability(getDriver("browser"),loginLink,10).click();
+    public LoginPage goToLoginPage() {
+        clickElementWithExplicitWait(loginLink);
         logger.info("Login sayfasına geçiş yapılıyor....");
         return new LoginPage(getDriver("browser"));
     }
     public boolean isLoginLinkDisplayed() {
         isDisplayed = isWebElementDisplayed(loginLink);
-        logger.info("Homepage'teki navigateToLoginPage linki görüntülendi mi? " + isDisplayed);
+        logger.info("Homepage'teki goToLoginPage linki görüntülendi mi? " + isDisplayed);
         return isDisplayed;
     }
-    public boolean isMenuNavMenuDisplayed(){
+    public boolean isNavMenuDisplayed(){
         isDisplayed = isWebElementDisplayed(mainNavElement);
         logger.info("Homepage'teki main nav menu görüntülendi mi? " + isDisplayed);
         return isDisplayed;
@@ -90,4 +96,27 @@ public class HomePage {
         return isDisplayed;
     }
 
+    public long pageLoadingTime() {
+        //Sayfa tamamen yüklenene kadar beklenir
+        long actualDuration = JavascriptUtils.pageLoadingTime();
+        logger.info( "LCW anasayfa yüklenme süresi " + actualDuration/1000 + " saniyedir");
+        return actualDuration;
+    }
+
+    public boolean isBasketLinkDisplayed() {
+        isDisplayed = isWebElementDisplayed(basketLink);
+        logger.info("Homepage'teki sepet butonu görüntülendi mi? " + isDisplayed);
+        return isDisplayed;
+    }
+    public boolean isFooterContentDisplayed(){
+        isDisplayed = isWebElementDisplayed(footerContent);
+        logger.info("Homepage'teki Footer alanı görüntülendi mi? " + isDisplayed);
+        return isDisplayed;
+    }
+
+    public BasketPage goToBasket() {
+        clickElementWithExplicitWait(basketLink);
+        logger.info("Sepet sayfasına geçiş yapılıyor....");
+        return new BasketPage(getDriver("browser"));
+    }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel UI Test Suite" parallel="tests" thread-count="4">
+    <test verbose="2" preserve-order="true"
+          name="TC01_01">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="TC01_01"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="TC01_02">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="TC01_02"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="TC01_03">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="TC01_03"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="TC01_04">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="TC01_04"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="TC01_05">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="TC01_05"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="TC01_06">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="TC01_06"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
