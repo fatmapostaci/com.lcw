@@ -59,6 +59,10 @@
                 <version>3.2.5</version>
                 <!--  Güncel sürüm  -->
                 <configuration>
+                    <!-- TestNG XML dosyası ile çalıştırma -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>Regression.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                     <!--                     include kismi ise istedigimiz methodu calistirmamizi saglar. -->
                     <includes>
                         <include>**/*Test.java</include>

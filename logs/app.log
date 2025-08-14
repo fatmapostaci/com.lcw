@@ -1,6 +1,2 @@
-2025-08-15 01:11:03 [main] INFO  tests.BaseTest - Driver açıldı
-2025-08-15 01:11:14 [main] INFO  tests.BaseTest - Captha geçildi
-2025-08-15 01:11:14 [main] INFO  pages.HomePage - LCW anasayfa yüklenme süresi 6 saniyedir
-2025-08-15 01:11:14 [main] INFO  tests.BaseTest - Driver açıldı
-2025-08-15 01:11:25 [main] INFO  pages.HomePage - Homepage'teki search box görüntülendi mi? true
-2025-08-15 01:11:25 [main] INFO  tests.BaseTest - Driver açıldı
+2025-08-15 01:34:02 [main] INFO  pages.HomePage - Sepet sayfasına geçiş yapılıyor....
+2025-08-15 01:34:02 [main] INFO  pages.BasketPage - BasketPage'teki Sepet başlığı görüntülendi mi? true
