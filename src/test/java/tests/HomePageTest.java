@@ -22,7 +22,7 @@ public class HomePageTest extends BaseTest {
     @Story("US01")
     @Test(groups = {"Regression"})
     public void TC01_01( ) {
-        lcwHomePage = new HomePage(driver);
+        lcwHomePage = new HomePage( getDriver("browser"));
         long duration = 15000;
         long actualDuration = lcwHomePage.pageLoadingTime();
         Assert.assertTrue(actualDuration <= duration, "Sayfa yüklenme süresi fazla: " + actualDuration + " ms");
@@ -91,7 +91,6 @@ public class HomePageTest extends BaseTest {
         lcwHomePage = new HomePage( getDriver("browser"));
         LoginPage loginPage = lcwHomePage.goToLoginPage();
         Assert.assertTrue( loginPage.isDisplayedEmailAndPhoneElement(),"Giriş sayfası görüntülenemedi");
-        logger.info("Anasayfadan Login sayfasının açıldığı test edildi");
     }
     @Owner("Fatma")
     @Severity(SeverityLevel.NORMAL)
@@ -101,8 +100,7 @@ public class HomePageTest extends BaseTest {
     public void TC01_08() {
         lcwHomePage = new HomePage( getDriver("browser"));
         BasketPage basketPage = lcwHomePage.goToBasket();
-        Assert.assertTrue( basketPage.isCurrentUrlBasket(),"sepet sayfası görüntülenemedi");
-        logger.info("Anasayfadan Sepet sayfasının açıldığı test edildi");
+        Assert.assertTrue( basketPage.isTitleVisible(),"sepet sayfası görüntülenemedi");
     }
 
 }

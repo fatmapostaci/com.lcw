@@ -57,7 +57,7 @@ public class BaseTest {
     @BeforeMethod
     @Parameters("browser")
     public void setUp(@Optional("chrome") String browser ){
-        logger.info("before test - driver açıldı");
+        logger.info("Driver açıldı");
         driver= getDriver(browser);
         driver.get(ConfigReader.getProperty("homepage_url"));
 
@@ -77,7 +77,7 @@ public class BaseTest {
     }
     @AfterMethod
     public void tearDown(){
-        logger.info(("after test - driver kapatıldı"));
+        logger.info(("Driver kapatıldı"));
         quitDriver();
     }
 

@@ -1,10 +1,4 @@
-2025-08-14 01:41:00 [TestNG-tests-2] INFO  pages.HomePage - input -> elementi görüntülendi
-2025-08-14 01:41:00 [TestNG-tests-2] INFO  pages.HomePage - Homepage'teki search box görüntülendi mi? true
-2025-08-14 01:41:00 [TestNG-tests-2] INFO  tests.BaseTest - after test - driver kapatıldı
-2025-08-14 01:41:08 [TestNG-tests-4] INFO  tests.BaseTest - Captha geçildi
-2025-08-14 01:41:08 [TestNG-tests-1] INFO  tests.BaseTest - Captha geçildi
-2025-08-14 01:41:08 [TestNG-tests-1] INFO  pages.HomePage - span -> elementi görüntülendi
-2025-08-14 01:41:08 [TestNG-tests-1] INFO  pages.HomePage - Homepage'teki sepet butonu görüntülendi mi? true
-2025-08-14 01:41:08 [TestNG-tests-1] INFO  tests.HomePageTest - Homepage'teki Sepetim butonunun görünürlügü test edildi 
-2025-08-14 01:41:08 [TestNG-tests-1] INFO  tests.BaseTest - after test - driver kapatıldı
-2025-08-14 01:41:28 [TestNG-tests-4] INFO  tests.BaseTest - after test - driver kapatıldı
+2025-08-14 03:16:43 [main] INFO  tests.BaseTest - Driver açıldı
+2025-08-14 03:16:51 [main] INFO  tests.BaseTest - Captha geçildi
+2025-08-14 03:16:51 [main] INFO  pages.HomePage - LCW anasayfa yüklenme süresi 3 saniyedir
+2025-08-14 03:16:51 [main] INFO  tests.BaseTest - Driver kapatıldı

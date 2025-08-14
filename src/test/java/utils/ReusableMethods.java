@@ -1,16 +1,21 @@
 package utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.HomePage;
 
 import java.time.Duration;
 import java.util.List;
 
-public class ReusableMethods {
+import static utils.TestDriver.getDriver;
 
+public class ReusableMethods {
+    static Logger logger = LogManager.getLogger(ReusableMethods.class);
     // Waits for the visibility of a specific element
     public static WebElement waitForVisibility(WebDriver driver, WebElement element, int timeoutSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
@@ -58,6 +63,24 @@ public class ReusableMethods {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             System.err.println("Sleep was interrupted");
+        }
+    }
+    //******************************is Displayed Method***********************************
+
+    public static boolean isWebElementDisplayed(WebElement element){
+        waitForVisibility(getDriver(ConfigReader.getProperty("browser")),element,10);
+    //    logger.info(element.getTagName() + " -> elementi görüntülendi");
+        return element.isDisplayed();
+    }
+
+    //*********************************is Clickable Method*********************************************
+
+    public static boolean clickElementWithExplicitWait(WebElement element){
+        try {
+            waitForClickability(getDriver(ConfigReader.getProperty("browser")),element,10);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }
