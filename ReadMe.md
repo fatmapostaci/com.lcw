@@ -1,5 +1,5 @@
 """
-# com.lcw UI Test Automation Project
+# com.lcw LCWaikiki UI Test Automation Project
 
 Bu proje, **LC Waikiki** web uygulaması için hazırlanmış bireysel bir **UI test otomasyonu** çalışmasıdır.
 **Java**, **Selenium WebDriver**, **TestNG**, **Page Object Model (POM)** yapısı ve XML test senaryoları kullanılarak geliştirilmiştir.
