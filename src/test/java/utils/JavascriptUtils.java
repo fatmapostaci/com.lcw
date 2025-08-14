@@ -30,7 +30,10 @@ public class JavascriptUtils extends TestDriver {
         JavascriptExecutor js = (JavascriptExecutor) getDriver("browser");
         js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
     }
-
+    public static void scrollToBottomJS() {
+        JavascriptExecutor jsexecutor = (JavascriptExecutor) getDriver("browser");
+        jsexecutor.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
     // Belirtilen WebElement'e JavaScript kullanarak odaklanır, yani görünür hale getirir.
     public static void scrollIntoViewJS(WebElement element) {
         JavascriptExecutor jsexecutor = (JavascriptExecutor) getDriver("browser");

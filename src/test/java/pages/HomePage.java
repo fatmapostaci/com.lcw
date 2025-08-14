@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
 import utils.JavascriptUtils;
 import utils.ReusableMethods;
+import utils.ReusableMethods.*;
 import java.util.List;
 import static utils.TestDriver.getDriver;
 
@@ -45,7 +46,7 @@ public class HomePage {
     @FindBy (xpath = "//div//span[text()='Sepetim']")
     private WebElement basketLink;
 
-    @FindBy (xpath = "div[class='footer-content']")
+    @FindBy (xpath = "//div[@class='footer-content']")
     private WebElement footerContent;
 
 
@@ -53,45 +54,29 @@ public class HomePage {
     //***********************************Getter Methods*******************************************
 
 
-    //******************************is Displayed Method***********************************
 
-    public boolean isWebElementDisplayed(WebElement element){
-        ReusableMethods.waitForVisibility(getDriver(ConfigReader.getProperty("browser")),element,10);
-        logger.info(element.getTagName() + " -> elementi görüntülendi");
-        return element.isDisplayed();
-    }
-
- //*********************************is Clickable Method*********************************************
-
-    public boolean clickElementWithExplicitWait(WebElement element){
-        try {
-            ReusableMethods.waitForClickability(getDriver(ConfigReader.getProperty("browser")),element,10);
-            return true;
-        } catch (Exception e) {
-           return false;
-        }
-    }
 
     //***********************************Extra methods***************************
 
 
     public LoginPage goToLoginPage() {
-        clickElementWithExplicitWait(loginLink);
+        loginLink.click();
+//        ReusableMethods.clickElementWithExplicitWait(loginLink);
         logger.info("Login sayfasına geçiş yapılıyor....");
         return new LoginPage(getDriver("browser"));
     }
     public boolean isLoginLinkDisplayed() {
-        isDisplayed = isWebElementDisplayed(loginLink);
+        isDisplayed = ReusableMethods.isWebElementDisplayed(loginLink);
         logger.info("Homepage'teki goToLoginPage linki görüntülendi mi? " + isDisplayed);
         return isDisplayed;
     }
     public boolean isNavMenuDisplayed(){
-        isDisplayed = isWebElementDisplayed(mainNavElement);
+        isDisplayed = ReusableMethods.isWebElementDisplayed(mainNavElement);
         logger.info("Homepage'teki main nav menu görüntülendi mi? " + isDisplayed);
         return isDisplayed;
     }
     public boolean isSearchBoxDisplayed() {
-        isDisplayed = isWebElementDisplayed(searchBoxElement);
+        isDisplayed = ReusableMethods.isWebElementDisplayed(searchBoxElement);
         logger.info("Homepage'teki search box görüntülendi mi? " + isDisplayed);
         return isDisplayed;
     }
@@ -104,18 +89,33 @@ public class HomePage {
     }
 
     public boolean isBasketLinkDisplayed() {
-        isDisplayed = isWebElementDisplayed(basketLink);
+        isDisplayed = ReusableMethods.isWebElementDisplayed(basketLink);
         logger.info("Homepage'teki sepet butonu görüntülendi mi? " + isDisplayed);
         return isDisplayed;
     }
     public boolean isFooterContentDisplayed(){
-        isDisplayed = isWebElementDisplayed(footerContent);
+        int retryCount = 0;
+        int maxRetries = 3;
+        boolean isDisplayed = false;
+
+        while (retryCount < maxRetries) {
+            try {
+                JavascriptUtils.scrollToBottomJS();
+                isDisplayed = ReusableMethods.isWebElementDisplayed(footerContent);
+                if (isDisplayed) {
+                    break;
+                }
+            } catch (Exception e) {
+                logger.warn("Footer görünürlüğü kontrolünde hata. Deneme: " + (retryCount + 1));
+            }
+            retryCount++;
+        }
         logger.info("Homepage'teki Footer alanı görüntülendi mi? " + isDisplayed);
         return isDisplayed;
     }
 
     public BasketPage goToBasket() {
-        clickElementWithExplicitWait(basketLink);
+        basketLink.click();
         logger.info("Sepet sayfasına geçiş yapılıyor....");
         return new BasketPage(getDriver("browser"));
     }

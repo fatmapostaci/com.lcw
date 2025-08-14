@@ -73,7 +73,7 @@ public class LoginPage {
         logger.info("Login butonuna tıklandı.");
     }
     public boolean isDisplayedEmailAndPhoneElement(){
-        isDisplayed = ReusableMethods.waitForClickability(getDriver("browser"),emailAndPhoneElement,10).isDisplayed();
+        isDisplayed = ReusableMethods.waitForVisibility(getDriver("browser"),emailAndPhoneElement,10).isDisplayed();
         logger.info("Login sayfasına geçildiği doğrulandı mı? " + isDisplayed );
         return isDisplayed;
     }
